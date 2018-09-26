@@ -163,6 +163,12 @@
                 } else {
                     alert("We could not find your address: " + status);
                     callback('');
+                    var type_column = "'type'";
+var searchType = type_column + " IN (-1,";
+if ( $("#cbType1").is(':checked')) searchType += "1,";
+if ( $("#cbType2").is(':checked')) searchType += "2,";
+if ( $("#cbType3").is(':checked')) searchType += "3,";
+self.whereClause += " AND " + searchType.slice(0, searchType.length - 1) + ")";
                 }
             });
         } else {
